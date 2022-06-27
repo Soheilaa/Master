@@ -3,9 +3,11 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: Arial;
+  
   margin: 0;
-  background-color: #e7f8f8;
+  background-image: url("./components/images/pattern.png");
+  background-repeat: repeat-x;
 }
 
 .centered {
