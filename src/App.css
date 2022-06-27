@@ -1,0 +1,38 @@
+.App {
+    padding-top: 4rem;
+    min-height: 100vh;
+}
+.navbar {
+    background-color: rgb(137, 199, 207);
+    width: 200%;
+    height: 5rem;
+    display: flex;
+    padding: 0 10%;
+    justify-content: space-between;
+    align-items: center;
+}
+.col {
+    margin-top: 7vh;
+    margin-left: 20vh;
+    column-count: 2;
+    border-bottom: 2px; 
+}
+.card-header {
+    margin-top: -5vh;
+    margin-left: 30vh;
+    text-align: center;
+    font-family: Arial;
+    font-size: medium;
+}
+.card-title {
+    background-color: rgb(238, 240, 145);
+    width: 200px;
+    margin-left: -20vh;
+    font-family: Arial;
+    font-size: medium;
+    text-align: center;
+}
+.card-img {
+    width: 5em;
+    height: 5em;
+}

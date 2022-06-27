@@ -1,4 +1,4 @@
-/* import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import classes from './MainNavigation.module.css';
 
@@ -25,20 +25,3 @@ const MainNavigation = () => {
 };
 
 export default MainNavigation;
- */
-import React, { Component } from 'react';
-
-
-export default class MainNavigation extends Component {
-  render() {
-    return(
-      <div>
-        <nav className='navbar'>
-          <a href="" className='navbar-brand'>
-            pokedex
-          </a>
-        </nav>
-      </div>
-    );
-  }
-}

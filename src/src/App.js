@@ -1,31 +1,12 @@
-/* import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import AllPokemons from './pages/AllPokemons';
 import PokemonDetail from './pages/PokemonDetail';
 import NewPokemon from './pages/NewPokemon';
 import NotFound from './pages/NotFound';
 import Layout from './components/layout/Layout';
-import { Component } from 'react/cjs/react.production.min'; */
-import React, { Component } from 'react';
 
-import './App.css';
-import Dashboard from './components/layout/Dashboard';
-import MainNavigation from './components/layout/MainNavigation';
-
-class App extends Component {
-  render() {
-    return (  
-      <div className='App'>
-        <MainNavigation />
-        <div className='container'>
-         <Dashboard />
-        </div>
-      </div>
-    );
-  }
-}
-export default App;
-/* function App() {
+function App() {
   return (
     <Layout>
       <Switch>
@@ -49,4 +30,4 @@ export default App;
   );
 }
 
-export default App; */
+export default App;

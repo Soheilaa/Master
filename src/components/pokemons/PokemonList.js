@@ -1,55 +1,35 @@
-import { Fragment } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import React, { Component } from 'react'
 
-import PokemonItem from './PokemonItem';
-import classes from './PokemonList.module.css';
+import axios from 'axios';
 
-const sortPokemons = (pokemons, ascending) => {
-  return pokemons.sort((pokemonA, pokemonB) => {
-    if (ascending) {
-      return pokemonA.id > pokemonB.id ? 1 : -1;
-    } else {
-      return pokemonA.id < pokemonB.id ? 1 : -1;
-    }
-  });
-};
+import Card from '../UI/Card'
 
-const PokemonList = (props) => {
-  const history = useHistory();
-  const location = useLocation();
+export default class PokemonList extends Component {
+    state={
+      url:'https://pokeapi.co/api/v2/pokemon/',
+      pokemon: null
+    };
 
-  const queryParams = new URLSearchParams(location.search);
+ async componentDidMount () {
+  const res = await axios.get(this.state.url);
+  this.setState({pokemon: res.data['results']});
+ }
 
-  const isSortingAscending = queryParams.get('sort') === 'asc';
-
-  const sortedPokemons = sortPokemons(props.pokemons, isSortingAscending);
-
-  const changeSortingHandler = () => {
-    history.push({
-      pathname: location.pathname,
-      search: `?sort=${(isSortingAscending ? 'desc' : 'asc')}`
-    });
-  };
-
-  return (
-    <Fragment>
-      <div className={classes.sorting}>
-        <button onClick={changeSortingHandler}>
-          Sort {isSortingAscending ? 'Descending' : 'Ascending'}
-        </button>
-      </div>
-      <ul className={classes.list}>
-        {sortedPokemons.map((pokemon) => (
-          <PokemonItem
-            key={pokemon.id}
-            id={pokemon.id}
-            author={pokemon.author}
-            text={pokemon.text}
-          />
-        ))}
-      </ul>
-    </Fragment>
-  );
-};
-
-export default PokemonList;
+  render() {
+    return (
+      <React.Fragment>
+        {this.state.pokemon ? ( 
+          <div>
+            {this.state.pokemon.map(pokemon=>(
+              <Card 
+                key = {pokemon.name}
+                name = {pokemon.name}
+                url = {pokemon.url}
+              />))}
+          </div>) :(
+            <h1>Loading Pokemon</h1>
+        )}
+      </React.Fragment>
+    ); 
+  }
+}
