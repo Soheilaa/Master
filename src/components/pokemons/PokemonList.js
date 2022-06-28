@@ -5,7 +5,8 @@ import axios from 'axios';
 import Card from '../UI/Card'
 
 export default class PokemonList extends Component {
-    state={
+
+  state={
       url:'https://pokeapi.co/api/v2/pokemon/',
       pokemon: null
     };
@@ -19,8 +20,8 @@ export default class PokemonList extends Component {
     return (
       <React.Fragment>
         {this.state.pokemon ? ( 
-          <div>
-            {this.state.pokemon.map(pokemon=>(
+          <div className='row'>
+            {this.state.pokemon.map(pokemon => (
               <Card 
                 key = {pokemon.name}
                 name = {pokemon.name}

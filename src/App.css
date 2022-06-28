@@ -1,6 +1,8 @@
 .App {
     padding-top: 4rem;
     min-height: 100vh;
+    background-image: url('./components/images/pattern.png');
+    background-repeat: repeat-x; 
 }
 .navbar {
     background-color: rgb(137, 199, 207);
@@ -33,6 +35,6 @@
     text-align: center;
 }
 .card-img {
-    width: 5em;
-    height: 5em;
+    width: 100px;
+  
 }
