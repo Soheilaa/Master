@@ -6,9 +6,9 @@ export default class MainNavigation extends Component {
     return(
       <div>
         <nav className='navbar'>
-          <a href="" className='navbar-brand'>
+          <h4 href="" className='navbar-brand'>
             Pokedex
-          </a>
+          </h4>
         </nav>
       </div>
     );

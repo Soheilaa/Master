@@ -12,8 +12,8 @@ export default class PokemonList extends Component {
     };
 
  async componentDidMount () {
-  const res = await axios.get(this.state.url);
-  this.setState({pokemon: res.data['results']});
+    const res = await axios.get(this.state.url);
+    this.setState({pokemon: res.data['results']});
  }
 
   render() {
@@ -26,8 +26,9 @@ export default class PokemonList extends Component {
                 key = {pokemon.name}
                 name = {pokemon.name}
                 url = {pokemon.url}
-              />))}
-          </div>) :(
+            />))}
+          </div>
+          ) :(
             <h1>Loading Pokemon</h1>
         )}
       </React.Fragment>

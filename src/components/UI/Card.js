@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 
-import styled from 'styled-components';
-
-const sprite = styled.img`
-  width: 5em;
-  height: 5em;
-`;
+import { Link } from 'react-router-dom';
 
 export default class Card extends Component {
+  
   state = {
     name: '',
     imageUrl: '',
@@ -16,44 +12,32 @@ export default class Card extends Component {
 
   componentDidMount () {
     const { name, url } = this.props;
-    const pokemonIndex = url.split("/")[url.split('/').length - 2];
-    const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${pokemonIndex}.png?raw=true`;
-  
-    
-    this.setState({
-      name,
-      imageUrl,
-      pokemonIndex
-    });
+    const pokemonIndex = url.split('/')[url.split('/').length - 2];
+    const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonIndex}.png`;
+
+    this.setState({ name, imageUrl, pokemonIndex })
   }
 
   render() {
     return (
       <div className="col">
-          <div className='card'>
-            <h5 className='card-header'>
-              {this.state.pokemonIndex}
-            </h5>
-            <sprite className='card-img' 
-              onload={() => this.setState({imageLoading: false})}
-              onError={() => this.setState({ toManyRequests: true})} 
-              src = {this.state.imageUrl}
-            />
-            <div className='card-body'>
-              <h6 className='card-title'> 
-                {this.state.name
-                .toLowerCase()
-                .split(" ")
-                .map(
-                  letter => letter.charAt(0).toUpperCase() + letter.substring(1)
-                )
-                .join(' ')
-                }
-              </h6>
-            </div>
-         </div>
+        <Link to={`pokemon/${this.state.pokemonIndex}`}>
+
+          <div href='' className='card-title'>
+            {this.state.pokemonIndex} ,
+            {this.state.name.toLowerCase().split(" ").map(
+              letter => letter.charAt(0).toUpperCase() + letter.substring(1)
+              ).join(' ')
+            }
+          </div>
+
+          <div className='card-img'>
+            <img src = {this.state.imageUrl} alt="pokimon img"/>
+          </div>
+
+        </Link>
       </div>
-    )
+    );
   }
 }
 
